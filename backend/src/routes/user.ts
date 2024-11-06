@@ -38,6 +38,7 @@ userRoute.post("/signup", async (c) => {
       }, c.env.JWT_SECRET)
       return c.json(
         {
+          userId: account.id,
           token: jwt
         },
         201
@@ -54,6 +55,21 @@ userRoute.post("/signup", async (c) => {
   }
 
 });
+
+userRoute.get("/:id", async(c) => {
+  const prisma = c.get("prisma")
+  const param = c.req.param("id")
+  const blogs = await prisma.user.findMany({
+    where:{
+      id: param
+    },
+    select:{
+      posts: true
+    }
+  })
+
+  return c.json(blogs, 200)
+})
 
 userRoute.post("/signin", async (c) => {
 
@@ -81,6 +97,7 @@ userRoute.post("/signin", async (c) => {
           id: account.id
         }, c.env.JWT_SECRET)
         return c.json({
+          userId: account.id ,
           token: jwt
         }, 200)
       }

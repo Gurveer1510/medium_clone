@@ -134,6 +134,22 @@ blogRoute.get('/:id', async (c) => {
     return c.json(blog, 200)
 })
 
+blogRoute.delete("/:id", async(c) => {
+    const prisma = c.get("prisma")
+    const param = c.req.param("id")
+    try {
+        await prisma.post.delete({
+            where:{
+                id: param
+            }
+        })
 
+        c.json("", 200)
+    } catch (error) {
+        c.json({
+            error: "Something went wrong"
+        }, 500)
+    }
+})
 
 export default blogRoute
