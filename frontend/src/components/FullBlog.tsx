@@ -1,16 +1,15 @@
 import AppBar from "./AppBar";
 import parse from 'html-react-parser';
 import Avatar from "./Avatar";
-import { Link } from "react-router-dom";
 type FullBlogType = {
   title: string;
   content: string;
   publishedDate: string;
   authorName: string;
-  authorId: string
+  authorId?: string
 };
 
-function FullBlog({ title, content, publishedDate, authorName, authorId }: FullBlogType) {
+function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
   const created_at = publishedDate.split("T")[0];
   const date = new Date(created_at);
   const formattedDate = date.toLocaleDateString("en-gb", {
