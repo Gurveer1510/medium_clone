@@ -30,10 +30,11 @@ function Auth({ type }: AuthProps) {
           },
         }
       );
-      const jwt = response.data.token;
-      if(!jwt) throw Error;
+      const {token, userId} = response.data;
+      if(!token) throw Error;
       
-      localStorage.setItem("token", jwt);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", userId)
       navigate("/blogs");
     } catch (error) {
       toast.error("👎 invalid inputs!", {

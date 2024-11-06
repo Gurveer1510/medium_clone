@@ -6,6 +6,7 @@ import CreateBlogPage from './pages/CreateBlogPage'
 import Blog from './pages/Blog'
 import Hero from './pages/Hero'
 import Blogs from './pages/Blogs'
+import Profile from './pages/Profile'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/blog/:id' element={<Blog />} />
         <Route path='/publish' element={<CreateBlogPage />} />
+        <Route path='/profile/:userId' element={<Profile />} />
       </Routes>
       </BrowserRouter>
     </>

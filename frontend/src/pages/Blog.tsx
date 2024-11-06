@@ -16,7 +16,6 @@ function Blog() {
         < Skeleton />
         < Skeleton />
         < Skeleton />
-        
         < Skeleton />
     </div>
     </div>
@@ -30,6 +29,7 @@ function Blog() {
         title={blog.title}
         content={blog.content}
         authorName={blog.author.name}
+        authorId={blog.author.id}
         publishedDate={blog.created_at}
       />
     </div>

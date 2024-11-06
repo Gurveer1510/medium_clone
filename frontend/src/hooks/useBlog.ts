@@ -16,6 +16,34 @@ import axios from "axios";
 //     blogs: BlogType[]
 // }
 
+const useBlogsOfUser = (id: string) => {
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+    const [blogs, setBlogs] = useState<[] | undefined>([])
+
+    useEffect(() => {
+        const getBlogs = async (id: string) => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${id}`,{
+                    headers: {
+                        "Authorization" : localStorage.getItem("token")
+                    }
+                })
+                if(response.data){
+                    setBlogs(response.data[0].posts)
+                }
+            } catch (error) {
+                setError(true)
+                setLoading(false)
+            } finally {
+                setLoading(false)
+            }
+        }
+        getBlogs(id)
+    }, [id])
+    return {loading, error, blogs}
+}
+
 function useBlogs(){
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
@@ -55,7 +83,8 @@ function useBlogSingle({id}: {id:string}){
         content: "",
         created_at: "",
         author: {
-            name: ""
+            name: "",
+            id: ""
         }
     })
 
@@ -89,5 +118,6 @@ function useBlogSingle({id}: {id:string}){
 
 export  {
     useBlogs,
-    useBlogSingle
+    useBlogSingle,
+    useBlogsOfUser
 }

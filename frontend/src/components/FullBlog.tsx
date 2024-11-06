@@ -1,14 +1,16 @@
 import AppBar from "./AppBar";
 import parse from 'html-react-parser';
 import Avatar from "./Avatar";
+import { Link } from "react-router-dom";
 type FullBlogType = {
   title: string;
   content: string;
   publishedDate: string;
   authorName: string;
+  authorId: string
 };
 
-function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
+function FullBlog({ title, content, publishedDate, authorName, authorId }: FullBlogType) {
   const created_at = publishedDate.split("T")[0];
   const date = new Date(created_at);
   const formattedDate = date.toLocaleDateString("en-gb", {
@@ -21,7 +23,7 @@ function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
       <AppBar />
       <div className="grid lg:grid-cols-12 px-10  pt-12 w-full">
         <div className="col-span-8  border-r border-gray-600 ">
-          <div  className="lg:text-4xl text-2xl font-bold tracking-tight border-b border-gray-600 pb-4">
+          <div className="lg:text-4xl text-2xl font-bold tracking-tight border-b border-gray-600 pb-4">
             {parse(title)}{" "}
             <div className="text-lg font-semibold mt-1 text-gray-600">
               Posted on {formattedDate}
@@ -32,13 +34,15 @@ function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
         </div>
 
         <div className="col-span-4 pl-4 hidden lg:block ">
-            <p className="font-bold uppercase mt-8 border-b border-gray-600 text-gray-600">Author</p>
+          <p className="font-bold uppercase mt-8 border-b border-gray-600 text-gray-600">Author</p>
+          <Link to={`/profile/${authorId}`}>
             <div className="font-custom flex items-center gap-2 pt-4 tracking-wide text-lg ">
-                <Avatar authorName={authorName} />
-                <div>
+              <Avatar authorName={authorName} />
+              <div className="hover:underline">
                 {authorName[0].toUpperCase()}{authorName.slice(1,)}
-                </div>
+              </div>
             </div>
+          </Link>
         </div>
       </div>
     </div>

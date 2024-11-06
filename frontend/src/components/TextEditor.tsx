@@ -70,7 +70,7 @@ const TextEditor = () => {
           <p className="font-bold md:text-xl">Enter a Title</p>
           <input
             value={title}
-            onChange={(e) => { setTitle(e.target.value); console.log(title) }}
+            onChange={(e) => { setTitle(e.target.value); }}
             type="text"
             placeholder='Title'
             className="p-3 w-[180px] md:w-[350px] rounded-md border focus:outline-blue-600 md:text-lg md:font-semibold"

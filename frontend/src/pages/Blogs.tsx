@@ -16,7 +16,7 @@ function Blogs() {
 
     if (loading) {
 
-        return <div>
+        return <div className="w-full">
             <AppBar />
             <div className="w-full flex flex-col items-center">
                 < Skeleton />
