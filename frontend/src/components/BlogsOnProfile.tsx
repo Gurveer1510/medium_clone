@@ -15,17 +15,19 @@ interface BlogsOnProfileProps {
     loading: boolean
     error: boolean
     blogs: BlogType[] | undefined
+    refreshFunc: () => {} | void
 }
 
 const BlogsOnProfile: React.FC<BlogsOnProfileProps> = ({
     loading,
     error,
-    blogs
+    blogs,
+    refreshFunc
 }) => {
 
     const clickHandler = async (id: string) => {
         await deleteBlog(id)
-        window.location.reload()
+        refreshFunc()
     }
 
     if (loading) {
