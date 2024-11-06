@@ -35,14 +35,14 @@ function FullBlog({ title, content, publishedDate, authorName, authorId }: FullB
 
         <div className="col-span-4 pl-4 hidden lg:block ">
           <p className="font-bold uppercase mt-8 border-b border-gray-600 text-gray-600">Author</p>
-          <Link to={`/profile/${authorId}`}>
-            <div className="font-custom flex items-center gap-2 pt-4 tracking-wide text-lg ">
-              <Avatar authorName={authorName} />
-              <div className="hover:underline">
-                {authorName[0].toUpperCase()}{authorName.slice(1,)}
-              </div>
+
+          <div className="font-custom flex items-center gap-2 pt-4 tracking-wide text-lg ">
+            <Avatar authorName={authorName} />
+            <div>
+              {authorName[0].toUpperCase()}{authorName.slice(1,)}
             </div>
-          </Link>
+          </div>
+
         </div>
       </div>
     </div>

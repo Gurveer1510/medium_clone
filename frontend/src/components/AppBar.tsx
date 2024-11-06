@@ -34,7 +34,7 @@ function AppBar() {
           pathname == `/profile/${localStorage.getItem("userId")}` ? null : (<>
             <Link to={`/profile/${localStorage.getItem("userId")}`}>
               <div>
-                <Avatar authorName="Gurveer Singh" />
+                <Avatar authorName={localStorage.getItem("username")} />
               </div>
             </Link>
             <div>
