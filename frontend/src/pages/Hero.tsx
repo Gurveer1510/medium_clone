@@ -44,7 +44,7 @@ export default function Hero() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full bg-[url('/hero-image.jpg')] bg-cover bg-center py-24 md:py-32 lg:py-40">
+        <section className="w-full py-24 md:py-32 lg:py-40">
           <div className="container px-4 md:px-6">
             <div className="mx-auto max-w-3xl space-y-6 text-center">
               <div className="pb-0 flex justify-center">
