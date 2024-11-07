@@ -20,13 +20,13 @@ const NoUploads = () => {
                     />
                 </svg>
             </div>
-            <h2 className="text-2xl font-semibold mb-2">No blogs yet</h2>
+            <h2 className="text-2xl font-semibold mb-2">No stories yet</h2>
             <p className="text-muted-foreground mb-6 max-w-md">
-                You haven't uploaded or published any blogs. Start sharing your thoughts with the world!
+                You haven't uploaded or published any stories. Start sharing your thoughts with the world!
             </p>
             <Link to={"/publish"} className="w-52 md:w-fit inline-flex gap-1 md:gap-2 items-center justify-center bg-black text-white px-2 md:px-6 py-2 rounded-lg">
                 <img className="h-4" src={pen} alt="" />
-                <span>Create your first blog</span>
+                <span>Write your first story</span>
             </Link>
         </div>
     )
