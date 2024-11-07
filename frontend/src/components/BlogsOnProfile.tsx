@@ -48,7 +48,7 @@ const BlogsOnProfile: React.FC<BlogsOnProfileProps> = ({
         )
     }
     return (
-        <div className=" flex flex-col items-center">
+        <div className="pb-2 md:pb-4 flex flex-col items-center border-b-2">
             <div className="px-8 py-4 flex flex-col justify-center items-center ">
                 { blogs  && blogs?.length > 0 ? (
                     blogs?.map((blog) => (
