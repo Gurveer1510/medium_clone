@@ -39,7 +39,8 @@ userRoute.post("/signup", async (c) => {
       return c.json(
         {
           userId: account.id,
-          token: jwt
+          token: jwt,
+          name: account.name
         },
         201
       );
@@ -98,7 +99,8 @@ userRoute.post("/signin", async (c) => {
         }, c.env.JWT_SECRET)
         return c.json({
           userId: account.id ,
-          token: jwt
+          token: jwt,
+          name: account.name
         }, 200)
       }
 

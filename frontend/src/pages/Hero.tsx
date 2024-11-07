@@ -1,19 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../requests";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
   const token = localStorage.getItem("token")
+  const navigate = useNavigate()
   const [loggedIn, setLoggedIn] = useState(false)
   useEffect(() => {
     if(token){
       setLoggedIn(true)
+      navigate("/blogs")
     } else{
       setLoggedIn(false)
     }
   } ,[token])
 
-  function logOut(){
-    localStorage.removeItem("token")
+  function handleLogOut(){
+    logout()
+    setLoggedIn(false)
   }
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -29,7 +33,7 @@ export default function Hero() {
           <Link to="/signup" className={`text-sm font-medium hover:underline underline-offset-4  border px-2 py-1 ${loggedIn ?  "hidden" : null} rounded-lg`}>
             Sign up
           </Link>
-          <button onClick={logOut} type="button" className={`text-sm font-medium hover:underline underline-offset-4  border px-2 py-1 rounded-lg ${!  loggedIn ?  "hidden" : null}`}>
+          <button onClick={handleLogOut} type="button" className={`text-sm font-medium hover:underline underline-offset-4  border px-2 py-1 rounded-lg ${!loggedIn ?  "hidden" : null}`}>
             Log Out
           </button>
           

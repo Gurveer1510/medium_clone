@@ -1,6 +1,7 @@
 import Avatar from "./Avatar";
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
+import { useLocation } from "react-router-dom";
 
 type BlogCardProps = {
   id?: string;
@@ -19,6 +20,7 @@ function BlogCard({
 }: BlogCardProps) {
   const created_at = publishedDate!!.split("T")[0];
   const date = new Date(created_at);
+  const { pathname } = useLocation()
   const formattedDate = date.toLocaleDateString("en-gb", {
     day: "numeric",
     month: "short",
@@ -43,22 +45,22 @@ function BlogCard({
           <div className="text-2xl font-bold tracking-tighter pl-2">
             {parse(title)}
           </div>
-          {
+          { pathname !== "/blogs" && (
             <div className="pl-2 float-right">
               {formattedDate}
-            </div>
+            </div>)
           }
           {content && (<>
-          <div className="pl-2 hidden lg:block">
-            <p>{parse(content!!.slice(0, 300))}...</p>
-          </div>
-          <div className="pl-2 lg:hidden ">
-            {parse(content!!.slice(0, 100))}...
-          </div>
+            <div className="pl-2 hidden lg:block">
+              <p>{parse(content!!.slice(0, 300))}<span>...</span></p>
+            </div>
+            <div className="pl-2 lg:hidden ">
+              {parse(content!!.slice(0, 100))}<span>...</span>
+            </div>
 
-          <div className="pl-2 text-gray-500 mt-4">
-            {Math.ceil(content!!.length / 100)} minute read
-          </div></>)}
+            <div className="pl-2 text-gray-500 mt-4">
+              {Math.ceil(content!!.length / 100)} minute read
+            </div></>)}
         </div>
       </div>
     </Link>

@@ -3,50 +3,29 @@ import { useState } from "react";
 import Button from "./Button";
 import { SignUpType } from "@gurveer1510/inkspot-common";
 import InputBox from "./InputBox";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+import { postAccount } from "../requests";
 
 
 interface AuthProps {
   type: "SignIn" | "SignUp";
 }
 function Auth({ type }: AuthProps) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [inputs, setInputs] = useState<SignUpType>({
     username: "",
     email: "",
     password: "",
   });
 
-  async function postAccount() {
+  const clickHandler = async () => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${type == "SignIn" ? "signin" : "signup"}`,
-        inputs,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const {token, userId} = response.data;
-      if(!token) throw Error;
-      
-      localStorage.setItem("token", token);
-      localStorage.setItem("userId", userId)
-      navigate("/blogs");
+      postAccount(inputs, type)
+      await new Promise(r => setTimeout(r,1000))
+      navigate("/blogs")
     } catch (error) {
-      toast.error("👎 invalid inputs!", {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      console.log("ERROR: ", error)
     }
   }
 
@@ -74,7 +53,7 @@ function Auth({ type }: AuthProps) {
         <div className=" w-full mt-2 flex flex-col gap-2 items-center justify-center">
           {type == "SignUp" ? (
             <InputBox
-              
+
               type={"text"}
               label={"Username"}
               placeholder={"Gurveer Singh"}
@@ -106,7 +85,7 @@ function Auth({ type }: AuthProps) {
               }))
             }
           />
-          <Button onClick={postAccount} type={type} />
+          <Button onClick={clickHandler} type={type} />
         </div>
       </div>
       <ToastContainer

@@ -42,7 +42,7 @@ const BlogsOnProfile: React.FC<BlogsOnProfileProps> = ({
                 Your Blogs: {blogs && blogs?.length > 0 ? blogs?.length : 0}
             </div>
             <div className="p-8 flex flex-col justify-center items-center ">
-                {
+                { blogs  && blogs?.length > 0 ? (
                     blogs?.map((blog) => (
                         <div className="px-4 flex">
 
@@ -59,6 +59,8 @@ const BlogsOnProfile: React.FC<BlogsOnProfileProps> = ({
                             </button>
                         </div>
                     ))
+                ) : "You have no blogs"
+                    
                 }
             </div>
         </div>

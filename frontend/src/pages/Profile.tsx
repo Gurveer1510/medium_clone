@@ -20,6 +20,7 @@ const Profile = () => {
                 error={error}
                 blogs={blogs}
             />
+            {/* Add Logout */}
         </div>
     )
 }
