@@ -16,12 +16,12 @@ const Profile = () => {
         <>
             <AppBar />
             <div className='w-screen mt-4'>
-                    <div className='px-12 text-3xl font-bold '>
+                    <div className='px-12 text-xl md:text-3xl font-bold '>
                         <p>
                             {localStorage.getItem("username")}
                         </p>
                     </div>
-                <div className='w-screen p-12 pt-4'>
+                <div className='w-screen p-12 pt-2 md:pt-4'>
                     <div>
                         <div className="self-start text-xl font-semibold ">
                             Your blogs: {blogs && blogs?.length > 0 ? blogs?.length : 0}

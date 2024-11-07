@@ -73,7 +73,7 @@ const TextEditor = () => {
             onChange={(e) => { setTitle(e.target.value); }}
             type="text"
             placeholder='Title'
-            className="p-3 w-[180px] md:w-[350px] rounded-md border focus:outline-blue-600 md:text-lg md:font-semibold"
+            className="p-3 w-[180px] md:w-[350px] rounded-md border focus:outline-blue-600 text-sm md:text-lg md:font-semibold"
           />
         </div>
         <button onClick={createBlog} disabled={isDisabled}  className={`h-fit mt-6 px-4 md:px-6 py-2 text-lg bg-black text-white rounded-lg hover:bg-slate-800 disabled:cursor-not-allowed `}>Publish</button>

@@ -1,6 +1,7 @@
 import Avatar from "./Avatar";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import storyNestImage from "../assets/storynest.png"
 
 function AppBar() {
 
@@ -8,7 +9,7 @@ function AppBar() {
 
   return (
     <div className=" border-b border-b-slate-600 flex items-center justify-between px-4 md:px-10 py-2">
-      <Link to={"/"}><div className="font-custom text-xl">INKSPOT</div></Link>
+      <Link to={"/"}><div className="font-custom text-xl"><img className="h-8" src={storyNestImage} alt="" /></div></Link>
       <div className="flex gap-1 md:gap-4 items-center">
         {
           pathname == "/publish" || pathname == `/profile/${localStorage.getItem("userId")}` ? null : (

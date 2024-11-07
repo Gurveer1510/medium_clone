@@ -3,6 +3,7 @@ import BlogCard from "./BlogCard"
 import { deleteBlog } from "../requests"
 import Loading from "./Loading"
 import Error from "./Error"
+import NoUploads from "./NoUploads"
 
 interface BlogType {
     id: string
@@ -65,7 +66,7 @@ const BlogsOnProfile: React.FC<BlogsOnProfileProps> = ({
                             </button>
                         </div>
                     ))
-                ) : "You have no blogs"
+                ) : <NoUploads />
                     
                 }
             </div>
