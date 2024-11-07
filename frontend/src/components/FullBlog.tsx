@@ -33,12 +33,14 @@ function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
         </div>
 
         <div className="col-span-4 pl-4 hidden lg:block ">
-          <p className="font-bold uppercase mt-8 border-b border-gray-600 text-gray-600">Author</p>
+          <div className="fixed w-full">
+            <p className=" font-bold uppercase mt-8 border-b border-gray-600 text-gray-600">Author</p>
 
-          <div className="font-custom flex items-center gap-2 pt-4 tracking-wide text-lg ">
-            <Avatar authorName={authorName} />
-            <div>
-              {authorName[0].toUpperCase()}{authorName.slice(1,)}
+            <div className=" font-custom flex items-center gap-2 pt-4 tracking-wide text-lg ">
+              <Avatar authorName={authorName} />
+              <div>
+                {authorName[0].toUpperCase()}{authorName.slice(1,)}
+              </div>
             </div>
           </div>
 

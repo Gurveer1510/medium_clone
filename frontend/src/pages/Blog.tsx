@@ -10,9 +10,10 @@ function Blog() {
 
   if(loading){
 
-    return <div>
+    return <div className='w-screen'>
         <AppBar />
-        <div className="w-full flex flex-col items-center">
+        <div className=" w-full flex flex-col items-center">
+        < Skeleton />
         < Skeleton />
         < Skeleton />
         < Skeleton />
