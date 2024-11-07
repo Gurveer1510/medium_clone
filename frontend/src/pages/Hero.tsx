@@ -28,7 +28,7 @@ export default function Hero() {
           <div>
             <img className="h-10" src={quill} alt="" />
           </div>
-          <span className="sr-only">Inkspot</span>
+          <span className="sr-only">StoryNest</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link to="/signin" className={`text-sm font-medium hover:underline underline-offset-4 border px-2 py-1 ${loggedIn ? "hidden" : null}  rounded-lg`}>
