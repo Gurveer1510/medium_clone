@@ -23,7 +23,7 @@ const Profile = () => {
                     </div>
                 <div className='w-screen p-12 pt-2 md:pt-4'>
                     <div>
-                        <div className="self-start text-xl font-semibold ">
+                        <div className="self-start text-xl font-semibold border-b">
                             Your stories: {blogs && blogs?.length > 0 ? blogs?.length : 0}
                         </div>
                         <BlogsOnProfile
