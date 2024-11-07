@@ -29,7 +29,11 @@ function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
             </div>
           </div>
 
-          <div className="lg:text-lg p-8 pl-0 text-justify ">{parse(content)}</div>
+          <div className="lg:text-lg p-8 pl-0 text-justify ">
+            <pre>
+              {parse(content)}
+            </pre>
+          </div>
         </div>
 
         <div className="col-span-2 pl-4 hidden lg:block ">
