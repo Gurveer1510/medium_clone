@@ -21,7 +21,7 @@ function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
     <div>
       <AppBar />
       <div className="grid lg:grid-cols-12 px-10  pt-12 w-full">
-        <div className="col-span-8  border-r border-gray-600 ">
+        <div className="col-span-10  border-r border-gray-600 ">
           <div className="lg:text-4xl text-2xl font-bold tracking-tight border-b border-gray-600 pb-4">
             {parse(title)}{" "}
             <div className="text-lg font-semibold mt-1 text-gray-600">
@@ -32,7 +32,7 @@ function FullBlog({ title, content, publishedDate, authorName }: FullBlogType) {
           <div className="lg:text-lg p-8 pl-0 text-justify ">{parse(content)}</div>
         </div>
 
-        <div className="col-span-4 pl-4 hidden lg:block ">
+        <div className="col-span-2 pl-4 hidden lg:block ">
           <div className="fixed w-full">
             <p className=" font-bold uppercase mt-8 border-b border-gray-600 text-gray-600">Author</p>
 
