@@ -1,27 +1,42 @@
 import { useBlogsOfUser } from '../hooks/useBlog'
+import LogOut from '../components/LogOut'
 import { useParams, useNavigate } from 'react-router-dom'
 import BlogsOnProfile from '../components/BlogsOnProfile'
 import AppBar from '../components/AppBar'
 
 const Profile = () => {
     const { userId } = useParams()
-    const {loading, error, blogs } = useBlogsOfUser(userId!!)
+    const { loading, error, blogs } = useBlogsOfUser(userId!!)
     const navigate = useNavigate()
 
     const refresh = () => {
         navigate(0)
     }
     return (
-        <div className='w-full'>
+        <>
             <AppBar />
-            <BlogsOnProfile
-                refreshFunc = {refresh}
-                loading={loading}
-                error={error}
-                blogs={blogs}
-            />
-            {/* Add Logout */}
-        </div>
+            <div className='w-screen mt-4'>
+                    <div className='px-12 text-3xl font-bold '>
+                        <p>
+                            {localStorage.getItem("username")}
+                        </p>
+                    </div>
+                <div className='w-screen p-12 pt-4'>
+                    <div>
+                        <div className="self-start text-xl font-semibold ">
+                            Your blogs: {blogs && blogs?.length > 0 ? blogs?.length : 0}
+                        </div>
+                        <BlogsOnProfile
+                            refreshFunc={refresh}
+                            loading={loading}
+                            error={error}
+                            blogs={blogs}
+                        />
+                    </div>
+                    <LogOut />
+                </div>
+            </div>
+        </>
     )
 }
 

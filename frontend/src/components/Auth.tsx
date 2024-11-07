@@ -21,8 +21,8 @@ function Auth({ type }: AuthProps) {
 
   const clickHandler = async () => {
     try {
-      postAccount(inputs, type)
-      await new Promise(r => setTimeout(r,1000))
+      await postAccount(inputs, type)
+      await new Promise(r => setTimeout(r,1800))
       navigate("/blogs")
     } catch (error) {
       console.log("ERROR: ", error)

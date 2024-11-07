@@ -1,6 +1,8 @@
 
 import BlogCard from "./BlogCard"
 import { deleteBlog } from "../requests"
+import Loading from "./Loading"
+import Error from "./Error"
 
 interface BlogType {
     id: string
@@ -31,21 +33,25 @@ const BlogsOnProfile: React.FC<BlogsOnProfileProps> = ({
     }
 
     if (loading) {
-        return <div>Loading...</div>
+        return (
+            <div className="w-full flex justify-center">
+                <Loading />
+            </div>
+        )
     }
     if (error) {
-        return <div>Error...</div>
+        return (
+            <div className="w-full flex justify-center">
+                <Error />
+            </div>
+        )
     }
     return (
-        <div className="w-screen px-12 flex flex-col items-center">
-            <div className="self-start text-xl font-semibold">
-                Your Blogs: {blogs && blogs?.length > 0 ? blogs?.length : 0}
-            </div>
-            <div className="p-8 flex flex-col justify-center items-center ">
+        <div className=" flex flex-col items-center">
+            <div className="px-8 py-4 flex flex-col justify-center items-center ">
                 { blogs  && blogs?.length > 0 ? (
                     blogs?.map((blog) => (
-                        <div className="px-4 flex">
-
+                        <div className=" flex">
                             <BlogCard
                                 key={blog.id}
                                 id={blog.id}
